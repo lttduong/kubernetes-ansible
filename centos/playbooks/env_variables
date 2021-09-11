@@ -1,4 +1,4 @@
-ad_addr: 10.11.12.2
+ad_addr: 10.69.20.45
 cidr_v: 10.244.0.0/16
 
 packages:

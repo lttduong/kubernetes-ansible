@@ -13,6 +13,11 @@
      regexp: '(^/.*swap*)'
      replace: '# \1'
 
+  - name: Disable SElinux enforcement
+    shell: |
+     setenforce 0
+     sed -i --follow-symlinks 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
+
   - name: Add IPs to /etc/hosts on master and workers
     lineinfile:
       dest: /etc/hosts
