@@ -100,10 +100,10 @@ Tasks in the playbook will:
 
 Resutl after run command success :
 
-`PLAY RECAP *****************************************************************************************************************************
+PLAY RECAP 
 kubernetes-master          : ok=21   changed=11   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 kubernetes-worker1         : ok=14   changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-`
+
 
 ## Step 3 Once the master node is ready, run the following command to set up the worker nodes.
 
@@ -118,26 +118,26 @@ we can see import configure in the setup_master_node.yml file.
 We also see two import playbook `playbooks/prerequisites.yml`, `playbooks/setting_up_nodes.yml` for purpose when scale Kubernetes cluster we only run setup_worker_nodes.yml to deployed join kubernetes cluster.
 
 Task in the playbook/configure_worker_nodes.yml will :
-     - Copying token to worker nodes
-     - Joining woker nodes to with kubernetes cluster
+    - Copying token to worker nodes
+    - Joining woker nodes to with kubernetes cluster
 
 Result after run command success:
 
-`PLAY RECAP *****************************************************************************************************************************
+PLAY RECAP 
 kubernetes-master          : ok=14   changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 kubernetes-worker1         : ok=17   changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-`
+
 Step 4: Once the workers have joined the cluster, run the following command to check the status of the worker nodes.
 
      [root@kubernetes-master ~]# kubectl get nodes
 
 Result after run command success:
 
-`[root@kubernetes-master ~]# kubectl get nodes
+[root@kubernetes-master ~]# kubectl get nodes
 NAME                 STATUS   ROLES                  AGE     VERSION
 kubernetes-master    Ready    control-plane,master   10m     v1.22.1
 kubernetes-worker1   Ready    <none>                 3m24s   v1.22.1
-`
+
 ## Additional information
 * The IP addresses of the workers and masters added to the /etc/hosts file on all workers and masters as part of the [prerequisites.yml](centos/playbooks/prerequisites.yml) playbook,
 if necessary or in case of DNS issues make sure the addresses have been added to /etc/hosts file.
