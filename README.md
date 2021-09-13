@@ -76,24 +76,24 @@ we can see import configure in the setup_master_node.yml file.
 
 Tasks in the playbook will:
   - `playbooks/prerequisites.yml` :
-      Disbling Swap on all.
-      Commentting Swap entries in /etc/fstab .
+      Disbling Swap on all
+      Commentting Swap entries in /etc/fstab 
       Disabling SElinux enforcement.
-      Add IPs to /etc/hosts on master and worker node.
+      Add IPs to /etc/hosts on master and worker node
 
   - `playbooks/setting_up_nodes.yml`  :
-      Creating a repository details in Kubernetes repo file.
-      Installing Docker and firewalld.
-      Installing required packages.
-      Starting and Enabling the required serviecs.
+      Creating a repository details in Kubernetes repo file
+      Installing Docker and firewalld
+      Installing required packages
+      Starting and Enabling the required serviecs
       Allow Network Ports in Firewalld service
       Enabling Bridge Firewall rule
 
   - `playbooks/configure_master_node.yml` :
-     - Pulling images required for setting up a Kubernetes cluster.
+     - Pulling images required for setting up a Kubernetes cluster
      - Resetting kubeadm
      - Initializing Kubernetes cluster
-     - Storing Logs and Generated token for future purpose.
+     - Storing Logs and Generated token for future purpose
      - Copying require files
      - Install Network Add-on Flannel
      In this case we're using Plannel. Flannel is a simple, lightweight layer 3 fabric for Kubernetes. Flannel manages an IPv4 network between multiple nodes in a cluster. It does not control how containers are networked to the host, only how the traffic is transported between hosts  
