@@ -22,7 +22,7 @@ Note: In this case deploy with using user "root". You can use any another user w
 - This is tree directory Playbook Ansible that we will deploy
 
 root@LDCC-VN:~/kubernetes-ansible# tree
-.
+".
 ├── README.md
 └── centos
     ├── ansible.cfg
@@ -36,7 +36,7 @@ root@LDCC-VN:~/kubernetes-ansible# tree
     │   └── setting_up_nodes.yml
     ├── setup_master_node.yml
     └── setup_worker_nodes.yml
-    
+"    
 ## Step 1: Test the connection from the Ansible node
 
 - We will add 2 groups in the Ansible inventoty: 1 for the master node and another worker node. This way we can define which Ansible task should be executed on a certain node. For this, add the line similar ~/kubenetes-ansible/centos/hosts   
