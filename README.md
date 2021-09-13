@@ -76,34 +76,34 @@ we can see import configure in the setup_master_node.yml file.
 
 Tasks in the playbook will:
   - `playbooks/prerequisites.yml` :
-      Disbling Swap on all
-      Commentting Swap entries in /etc/fstab 
-      Disabling SElinux enforcement.
-      Add IPs to /etc/hosts on master and worker node
+      - Disbling Swap on all
+      - Commentting Swap entries in /etc/fstab 
+      - Disabling SElinux enforcement.
+      - Add IPs to /etc/hosts on master and worker node
 
   - `playbooks/setting_up_nodes.yml`  :
-      Creating a repository details in Kubernetes repo file
-      Installing Docker and firewalld
-      Installing required packages
-      Starting and Enabling the required serviecs
-      Allow Network Ports in Firewalld service
-      Enabling Bridge Firewall rule
+      - Creating a repository details in Kubernetes repo file
+      - Installing Docker and firewalld
+      - Installing required packages
+      - Starting and Enabling the required serviecs
+      - Allow Network Ports in Firewalld service
+      - Enabling Bridge Firewall rule
 
   - `playbooks/configure_master_node.yml` :
-     - Pulling images required for setting up a Kubernetes cluster
-     - Resetting kubeadm
-     - Initializing Kubernetes cluster
-     - Storing Logs and Generated token for future purpose
-     - Copying require files
-     - Install Network Add-on Flannel
+      - Pulling images required for setting up a Kubernetes cluster
+      - Resetting kubeadm
+      - Initializing Kubernetes cluster
+      - Storing Logs and Generated token for future purpose
+      - Copying require files
+      - Install Network Add-on Flannel
      In this case we're using Plannel. Flannel is a simple, lightweight layer 3 fabric for Kubernetes. Flannel manages an IPv4 network between multiple nodes in a cluster. It does not control how containers are networked to the host, only how the traffic is transported between hosts  
 
 Resutl after run command success :
 
-PLAY RECAP *****************************************************************************************************************************
+`PLAY RECAP *****************************************************************************************************************************
 kubernetes-master          : ok=21   changed=11   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 kubernetes-worker1         : ok=14   changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-
+`
 
 ## Step 3 Once the master node is ready, run the following command to set up the worker nodes.
 
@@ -123,22 +123,21 @@ Task in the playbook/configure_worker_nodes.yml will :
 
 Result after run command success:
 
-PLAY RECAP *****************************************************************************************************************************
+`PLAY RECAP *****************************************************************************************************************************
 kubernetes-master          : ok=14   changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 kubernetes-worker1         : ok=17   changed=7    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
-
+`
 Step 4: Once the workers have joined the cluster, run the following command to check the status of the worker nodes.
 
      [root@kubernetes-master ~]# kubectl get nodes
 
 Result after run command success:
 
-[root@kubernetes-master ~]# kubectl get nodes
+`[root@kubernetes-master ~]# kubectl get nodes
 NAME                 STATUS   ROLES                  AGE     VERSION
 kubernetes-master    Ready    control-plane,master   10m     v1.22.1
 kubernetes-worker1   Ready    <none>                 3m24s   v1.22.1
-
-
+`
 ## Additional information
 * The IP addresses of the workers and masters added to the /etc/hosts file on all workers and masters as part of the [prerequisites.yml](centos/playbooks/prerequisites.yml) playbook,
 if necessary or in case of DNS issues make sure the addresses have been added to /etc/hosts file.
